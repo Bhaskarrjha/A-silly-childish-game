@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game</title>
+
+    <style>
+        body {
+            display: grid;
+            padding: 8%;
+            background-color: #96c7e7;
+        }
+        h1, .p{
+            font-weight: bold;
+            color: rgb(110, 124, 182);
+            font-family: Arial;
+
+
+        }
+        .content{
+            background-color: rgb(214, 223, 233);
+            padding: 30px;
+            border-radius: 35px;
+            width: 30%;
+            margin: auto;
+            text-align: center;
+            box-shadow: 0px 0px 20px 6px rgba(0,0,0,0.1);
+        }
+        #n{
+            background-color: #8eccf6;
+            padding: 10px;
+            border: 0px;
+            border-radius: 10px;
+            font-family: Arial;
+        }
+        .btn{
+            border: 0px;
+            background-color: #add9f6;
+            border-radius: 10px;
+            padding: 10px;
+            font-family: Arial;
+            margin: 20px;
+        }
+        
+        p{
+            font-family: Arial;
+            color: #3e8cc0;
+        }
+        span{
+            color: rgb(109, 110, 169);
+            font-weight: bold;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+<div class="content" id="content">
+    <h1>Guess the number</h1>
+    <p class="p">The number is from 0 to 100</p>
+    <input id="n" type="number" value="0">
+    <input type="button" value="Check" onclick="random()" id="btn" class="btn">
+    <p id="result"></p>
+    <p id="chances">you have <span id="points">10</span> chances*</p>
+    <input type="button" value="Reload" onclick="location.reload()" id="btn2" class="btn">
+</div>
+
+
+    <script>
+
+        let min=1
+        let max=100
+        let rn= Math.floor(Math.random()*(max-min+1))+min
+        console.log('random number is '+rn)
+
+         let p=10
+
+        console.log(p)
+        
+        function random() {    
+        let a=document.getElementById('n').value;
+        console.log(a)
+        p--
+        console.log(p+1)
+        document.getElementById('points').innerHTML =p
+        
+        
+        if (a>rn) {
+            document.getElementById('result').innerHTML="it\'s greater than the number 🙄"
+        } 
+        else if (a<rn) {
+            document.getElementById('result').innerHTML="it\'s smaller than the number 🙄"
+        }
+        else if (a==rn) {
+            document.getElementById('result').innerHTML="you guessed it 🌟"
+            document.getElementById('chances').style="display:none"
+            document.getElementById('btn').style="display:none"
+            document.getElementById('n').style="display:none"
+        }
+
+        if (p==0) {
+        document.getElementById('result').innerHTML=
+        "you lose 🤦‍♀️"
+        document.getElementById('points').style="display:none"
+        document.getElementById('btn').style="display:none"
+        document.getElementById('n').style="display:none"
+        document.getElementById('chances').style="display:none"
+
+    }
+        
+        }
+
+
+        
+
+    </script>
+
+
+    
+</body>
+</html>
